@@ -1,0 +1,58 @@
+LIBRARY IEEE;
+USE ieee.std_logic_1164.all;
+---------------------------------------------------------------------
+ENTITY  PONG IS
+	PORT(	rst	:	IN	STD_LOGIC;
+			clk	:	IN	STD_LOGIC;
+			ena	:	IN	STD_LOGIC;
+			joy1	:	IN	STD_LOGIC_VECTOR(1 DOWNTO 0);
+			joy2	:	IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+			sseg1	:	OUT	STD_LOGIC_VECTOR(6 DOWNTO 0);
+			sseg2	:	OUT	STD_LOGIC_VECTOR(6 DOWNTO 0));
+END ENTITY PONG;
+------------------------------------------------------------------------
+ARCHITECTURE functional	OF PONG IS
+	SIGNAL goal_player1, goal_player2 : STD_LOGIC;
+	SIGNAL raq1, raq2	:	STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL led1_raq1, led2_raq1, led3_raq1, led1_raq2, led2_raq2, led3_raq2 : STD_LOGIC_VECTOR (3 DOWNTO 0);
+	SIGNAL x_bola, y_bola : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	
+BEGIN
+	raq1: ENTITY work.logica_raquetas
+							PORT MAP(	joy => joy1,
+											raq_current => raq1,
+											led1_current => led1_raq1,
+											led2_current => led2_raq1,
+											led3_current => led3_raq1,
+											clk	=> clk,
+											rst => rst);
+	raq2: ENTITY work.logica_raquetas
+						PORT MAP(	joy => joy2,
+										raq_current => raq2,
+										led1_current => led1_raq2,
+										led2_current => led2_raq2,
+										led3_current => led3_raq2,
+										clk	=> clk,
+										rst => rst);
+	bola: ENTITY work.logica_bola
+							PORT MAP(	Raquet1_led1 => led1_raq1,
+											Raquet1_led2 => led2_raq1,
+											Raquet1_led3 => led3_raq1,
+											Raquet2_led1 => led1_raq2,
+											Raquet2_led2 => led2_raq2,
+											Raquet2_led3 => led3_raq2,
+											y_current => y_balo,
+											x_current => x_bola,
+											goal_player1	=> goal_player1,
+											goal_player2 => goal_player2,
+											clk	=> clk,
+											rst => rst);
+	marcador: ENTITY work.logica_marcador
+						PORT MAP(	goal_player1 => goal_player1,
+										goal_player2 => goal_player2,
+										sseg1 => sseg1,
+										sseg2 => sseg2,
+										clk => clk,
+										rst => rst);
+END ARCHITECTURE;
+	

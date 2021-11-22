@@ -1,0 +1,191 @@
+LIBRARY IEEE;
+USE ieee.std_logic_1164.all;
+-------------------------------------------------------------------------------------
+ENTITY  logica_raquetas IS
+	PORT(	rst	:	IN	STD_LOGIC;
+			clk	:	IN	STD_LOGIC;
+			joy	:	IN	STD_LOGIC_VECTOR(1 DOWNTO 0));
+END ENTITY logica_raquetas;
+-------------------------------------------------------------------------------------
+ARCHITECTURE state_machine	OF logica_raquetas IS
+	TYPE state IS (down, up, idle);
+	SIGNAL pr_state, nx_state : state;
+	SIGNAL en_reg_raq : STD_LOGIC;
+	SIGNAL raq_next, raq_arr, raq_aba : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL sel_r :STD_LOGIC_VECTOR(1 DOWNTO 0);
+	SIGNAL raq_current : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL raq	: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL led1_current, led1_next,led1_aba, led1_arr, led2_current, led2_next,led2_aba, led2_arr, led3_current, led3_next,led3_aba, led3_arr : STD_LOGIC_VECTOR(3 DOWNTO 0);
+BEGIN
+
+--------------------------------Sequential section-----------------------------------
+PROCESS (rst, clk)
+BEGIN
+	IF (rst = '1') THEN
+		pr_state <= idle;
+	ELSIF (rising_edge(clk)) THEN
+		pr_state <= nx_state;
+	END IF;
+END PROCESS;
+------------------------------Combinational section----------------------------------
+flip_flop_raq: ENTITY work. my_tff
+						GENERIC MAP(MAX_WIDTH => 8,
+										INICIAL => "00111000")
+						PORT MAP( clk => clk,
+									 ena => en_reg_raq,
+									 rst => rst,
+									 d	  => raq_next,
+									 q   => raq_current);
+-------------------------------------------------------------------------------------
+mux_raq:ENTITY work.mux2_1_with_select
+					GENERIC MAP (	MAX_WIDTH	=>	8)
+					PORT MAP( x1 => raq_current,
+								 x2 => raq_arr,
+								 x3 => raq_aba,
+								 sel => sel_r,
+								 y	=> raq_next);
+-------------------------------------------------------------------------------------
+barrel_shifter1:ENTITY work.shif_unit
+						GENERIC MAP(N	=>	8)
+						PORT MAP(shamt	=>	sel_r,
+									dataa => raq_current,
+									dataout => raq_arr);
+-------------------------------------------------------------------------------------
+barrel_shifter2:ENTITY work.shif_unit
+						GENERIC MAP(N => 8)
+						PORT MAP(shamt => sel_r,
+									dataa => raq_current,
+									dataout => raq_aba);
+-------------------------------------------------------------------------------------
+corrimiento_abajoled1: ENTITY work.adder_substractor
+								PORT MAP (	a	=> led1_current,
+												b => "0001",
+												s	=> led1_aba,
+												Cin0	=>	'0');
+----------------------------------------------------------------------------
+corrimiento_arribaled1: ENTITY work.adder_substractor
+								PORT MAP (	a	=> led1_current,
+												b => "1110",
+												s	=> led1_arr,
+												Cin0	=>	'1');
+-----------------------------------------------------------------------------	
+mux_led1: ENTITY work. mux2_1_with_select
+							GENERIC MAP (	MAX_WIDTH	=>	4)
+							PORT MAP ( x1	=>	led1_current,
+										  x2	=> led1_arr,
+										  x3	=> led1_aba,
+										  sel => sel_r,
+										  y	=> led1_next);
+------------------------------------------------------------------------------------------
+flip_flop_led1: ENTITY work. my_tff
+						GENERIC MAP(MAX_WIDTH => 4,
+										INICIAL(3 DOWNTO 0) => "0101",
+										INICIAL(7 DOWNTO 4) => "0000")
+						PORT MAP( clk => clk,
+									 ena => en_reg_raq,
+									 rst => rst,
+									 d	  => led1_next,
+									 q   => led1_current);
+-----------------------------------------------------------------------------------------------
+corrimiento_abajoled2: ENTITY work.adder_substractor
+								PORT MAP (	a	=> led2_current,
+												b => "0001",
+												s	=> led2_aba,
+												Cin0	=>	'0');
+----------------------------------------------------------------------------
+corrimiento_arribaled2: ENTITY work.adder_substractor
+								PORT MAP (	a	=> led2_current,
+												b => "1110",
+												s	=> led2_arr,
+												Cin0	=>	'1');
+-----------------------------------------------------------------------------	
+mux_led2: ENTITY work. mux2_1_with_select
+							GENERIC MAP (	MAX_WIDTH	=>	4)
+							PORT MAP ( x1	=>	led2_current,
+										  x2	=> led2_arr,
+										  x3	=> led2_aba,
+										  sel => sel_r,
+										  y	=> led2_next);
+------------------------------------------------------------------------------------------
+flip_flop_led2: ENTITY work. my_tff
+						GENERIC MAP(MAX_WIDTH => 4,
+										INICIAL(3 DOWNTO 0) => "0100",
+										INICIAL(7 DOWNTO 4) => "0000")
+						PORT MAP( clk => clk,
+									 ena => en_reg_raq,
+									 rst => rst,
+									 d	  => led2_next,
+									 q   => led2_current);
+-------------------------------------------------------------------------------------------
+corrimiento_abajoled3: ENTITY work.adder_substractor
+								PORT MAP (	a	=> led3_current,
+												b => "0001",
+												s	=> led3_aba,
+												Cin0	=>	'0');
+----------------------------------------------------------------------------
+corrimiento_arribaled3: ENTITY work.adder_substractor
+								PORT MAP (	a	=> led3_current,
+												b => "1110",
+												s	=> led3_arr,
+												Cin0	=>	'1');
+-----------------------------------------------------------------------------	
+mux_led3: ENTITY work. mux2_1_with_select
+							GENERIC MAP (	MAX_WIDTH	=>	4)
+							PORT MAP ( x1	=>	led3_current,
+										  x2	=> led3_arr,
+										  x3	=> led3_aba,
+										  sel => sel_r,
+										  y	=> led3_next);
+------------------------------------------------------------------------------------------
+flip_flop_led3: ENTITY work. my_tff
+						GENERIC MAP(MAX_WIDTH => 4,
+										INICIAL(3 DOWNTO 0) => "0011",
+										INICIAL(7 DOWNTO 4) => "0000")
+						PORT MAP( clk => clk,
+									 ena => en_reg_raq,
+									 rst => rst,
+									 d	  => led3_next,
+									 q   => led3_current);
+
+PROCESS(joy, pr_state, raq_current)
+BEGIN
+	CASE pr_state IS
+		WHEN idle =>
+			sel_r <= "00";
+			IF (joy = "10") THEN
+				nx_state <= up;
+			ELSIF (joy = "01") THEN 
+				nx_state <= down;
+			ELSIF (raq_current="11100000" AND joy = "10") THEN
+				nx_state <= idle;
+			ELSIF (raq_current = "00000111" AND joy = "01") THEN
+				nx_state <= idle;
+			ELSE
+				nx_state <= idle;
+			END IF;
+		WHEN down =>
+			sel_r <= "10";
+			IF (joy = "00") THEN
+				nx_state <= idle;
+			ELSIF (joy = "10") THEN
+				nx_state <= up;
+			ELSE
+				nx_state <= down;
+			END IF;
+		WHEN up =>
+			sel_r <= "01"; 
+			IF (joy = "00") THEN
+				nx_state <= idle;
+			ELSIF (joy <= "01") THEN
+				nx_state <= down;
+			ELSE 
+				nx_state <= up;
+			END IF;
+		
+		END CASE;
+	END PROCESS;
+END ARCHITECTURE;
+	
+	
+	
+	

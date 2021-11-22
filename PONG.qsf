@@ -1,0 +1,125 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+# Date created = 17:15:31  November 17, 2021
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		PONG_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16F484C6
+set_global_assignment -name TOP_LEVEL_ENTITY PONG
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:15:31  NOVEMBER 17, 2021"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name VHDL_FILE shif_unit.vhd
+set_global_assignment -name VHDL_FILE segmentos7.vhd
+set_global_assignment -name VHDL_FILE my_tff.vhd
+set_global_assignment -name VHDL_FILE mux2_1_with_select.vhd
+set_global_assignment -name VHDL_FILE Logica_raquetas.vhd
+set_global_assignment -name VHDL_FILE logica_marcador.vhd
+set_global_assignment -name VHDL_FILE logica_bola.vhd
+set_global_assignment -name VHDL_FILE full_adder.vhd
+set_global_assignment -name VHDL_FILE comparador.vhd
+set_global_assignment -name VHDL_FILE adder_substractor.vhd
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name VHDL_FILE mux2_1_with_select1.vhd
+set_global_assignment -name VHDL_FILE my_tff1.vhd
+set_global_assignment -name VHDL_FILE PONG.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VHDL_FILE univ_bin_counter.vhd
+set_global_assignment -name VHDL_FILE ledMatrix_Controller_FSM.vhd
+set_global_assignment -name VHDL_FILE game_to_matrix.vhd
+set_global_assignment -name VHDL_FILE Vhdl2.vhd
+set_global_assignment -name VHDL_FILE register_file.vhd
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_G21 -to clk
+set_location_assignment PIN_J6 -to ena
+set_location_assignment PIN_AA20 -to joy1[1]
+set_location_assignment PIN_AB20 -to joy1[0]
+set_location_assignment PIN_AB19 -to joy2[1]
+set_location_assignment PIN_AA18 -to joy2[0]
+set_location_assignment PIN_H5 -to rst
+set_location_assignment PIN_F13 -to sseg1[6]
+set_location_assignment PIN_F12 -to sseg1[5]
+set_location_assignment PIN_G12 -to sseg1[4]
+set_location_assignment PIN_H13 -to sseg1[3]
+set_location_assignment PIN_H12 -to sseg1[2]
+set_location_assignment PIN_F11 -to sseg1[1]
+set_location_assignment PIN_E11 -to sseg1[0]
+set_location_assignment PIN_F14 -to sseg2[6]
+set_location_assignment PIN_B17 -to sseg2[5]
+set_location_assignment PIN_B14 -to sseg2[4]
+set_location_assignment PIN_A14 -to sseg2[3]
+set_location_assignment PIN_B16 -to sseg2[2]
+set_location_assignment PIN_A16 -to sseg2[1]
+set_location_assignment PIN_D15 -to sseg2[0]
+set_location_assignment PIN_U7 -to M2[31]
+set_location_assignment PIN_W6 -to M2[30]
+set_location_assignment PIN_AA15 -to M2[0]
+set_location_assignment PIN_AA14 -to M2[1]
+set_location_assignment PIN_AB13 -to M2[2]
+set_location_assignment PIN_AB10 -to M2[3]
+set_location_assignment PIN_AB7 -to M2[4]
+set_location_assignment PIN_AB5 -to M2[5]
+set_location_assignment PIN_V14 -to M2[6]
+set_location_assignment PIN_Y13 -to M2[7]
+set_location_assignment PIN_U13 -to M2[8]
+set_location_assignment PIN_R10 -to M2[9]
+set_location_assignment PIN_Y10 -to M2[10]
+set_location_assignment PIN_T8 -to M2[11]
+set_location_assignment PIN_W7 -to M2[12]
+set_location_assignment PIN_V5 -to M2[13]
+set_location_assignment PIN_AB16 -to M2[14]
+set_location_assignment PIN_AA16 -to M2[15]
+set_location_assignment PIN_AB15 -to M2[16]
+set_location_assignment PIN_AB14 -to M2[17]
+set_location_assignment PIN_AA13 -to M2[18]
+set_location_assignment PIN_AA10 -to M2[19]
+set_location_assignment PIN_AA8 -to M2[20]
+set_location_assignment PIN_AA5 -to M2[21]
+set_location_assignment PIN_AB4 -to M2[22]
+set_location_assignment PIN_AA4 -to M2[23]
+set_location_assignment PIN_U14 -to M2[24]
+set_location_assignment PIN_W13 -to M2[25]
+set_location_assignment PIN_V12 -to M2[26]
+set_location_assignment PIN_V11 -to M2[27]
+set_location_assignment PIN_W10 -to M2[28]
+set_location_assignment PIN_V8 -to M2[29]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

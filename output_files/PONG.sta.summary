@@ -1,0 +1,149 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -3.879
+TNS   : -416.275
+
+Type  : Slow 1200mV 85C Model Setup 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.239
+TNS   : -14.084
+
+Type  : Slow 1200mV 85C Model Setup 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.128
+TNS   : -5.907
+
+Type  : Slow 1200mV 85C Model Setup 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.018
+TNS   : -14.111
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : -1.348
+TNS   : -39.289
+
+Type  : Slow 1200mV 85C Model Hold 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.204
+TNS   : -0.555
+
+Type  : Slow 1200mV 85C Model Hold 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : 0.345
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : 0.359
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -231.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -8.000
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -3.327
+TNS   : -345.593
+
+Type  : Slow 1200mV 0C Model Setup 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.994
+TNS   : -10.417
+
+Type  : Slow 1200mV 0C Model Setup 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.917
+TNS   : -4.493
+
+Type  : Slow 1200mV 0C Model Setup 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.811
+TNS   : -10.500
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : -1.284
+TNS   : -41.321
+
+Type  : Slow 1200mV 0C Model Hold 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.152
+TNS   : -0.385
+
+Type  : Slow 1200mV 0C Model Hold 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : 0.299
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : 0.311
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -231.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -8.000
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.722
+TNS   : -139.719
+
+Type  : Fast 1200mV 0C Model Setup 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.254
+TNS   : -0.994
+
+Type  : Fast 1200mV 0C Model Setup 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.197
+TNS   : -0.413
+
+Type  : Fast 1200mV 0C Model Setup 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.159
+TNS   : -1.034
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : -0.827
+TNS   : -24.636
+
+Type  : Fast 1200mV 0C Model Hold 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -0.097
+TNS   : -0.246
+
+Type  : Fast 1200mV 0C Model Hold 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -244.134
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'logica_raquetas:raqueta1|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'logica_raquetas:raqueta2|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'logica_bola:bola|univ_bin_counter:CLOCK|temp[0]'
+Slack : -1.000
+TNS   : -8.000
+
+------------------------------------------------------------
